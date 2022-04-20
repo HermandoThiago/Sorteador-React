@@ -1,0 +1,62 @@
+.modal-sorteado{
+
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.4);
+    position: absolute;
+
+    .box-modal{
+
+        min-width: 400px;
+        width: 40%;
+        height: 200px;
+        padding: 30px;
+        background-color: white;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.208);
+        border-radius: 10px;
+        animation: modalAnimation;
+        animation-duration: 1s;
+
+        .sorteado{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
+            p{
+                font-weight: bold;
+                font-size: 1.5rem;
+            }
+        }
+
+        button{
+            padding: 10px 20px;
+            margin-right: 10px;
+            border-radius: 10px;
+            border: 0;
+            color: white;
+            background-color: #672c70;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+    }
+
+}
+
+.modal-sorteado.mostrar{
+     display: flex;
+}
+
+@keyframes modalAnimation {
+    from{
+        margin-top: 300px;
+        opacity: 0;
+    }
+    to{
+        margin-top: 0;
+        opacity: 1;
+    }
+}
