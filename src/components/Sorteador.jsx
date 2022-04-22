@@ -5,6 +5,8 @@ import '../styles/modalSorteado.scss';
 // import components
 import Lista from "./Lista";
 import ModalSorteado from "./ModalSorteado";
+import Inputs from "./Inputs";
+import Premios from "./Premios";
 
 export default function Sorteador(){
 
@@ -12,11 +14,29 @@ export default function Sorteador(){
     const [concorrente, setConcorrente] = useState("");
     const [sorteado, setSorteado] = useState("");
     const [modal, setModal] = useState(false);
+    const [premio, setPremio] = useState("");
+    const [ganhadores, setGanhadores] = useState([
+        {
+            item: "Caneca",
+            ganhador: "Hermando Thiago"
+        },
+        {
+            item: "Voucher",
+            ganhador: "Rafaela"
+        }
+    ]);
 
 
     function addLista(concorrente){
-        setLista([...lista, concorrente]);
-        setConcorrente("");
+
+        if(!concorrente){
+            alert("Insira um nome válido")
+            return false
+        }else{
+            setLista([...lista, concorrente]);
+            setConcorrente("");
+        }
+
     }
 
     const deleteLista = (a) => {
@@ -36,12 +56,20 @@ export default function Sorteador(){
        setModal(true);
     }
 
+    function excluirSorteado(sorteado){
+        let newList = lista.filter(a => a !== sorteado)
+        setLista(newList);
+        setSorteado("");
+        setModal(false);
+    }
+
     return(
         <>
             <ModalSorteado 
             sorteado={sorteado}
             modal={modal}
             setModal={() => setModal(!modal)}
+            excluir={() => excluirSorteado(sorteado)}
             />
             <section className="container">
                 <div className="title">
@@ -49,16 +77,25 @@ export default function Sorteador(){
                 </div>
                 
                 <div className="add">
-                    <input 
-                    type="text"
-                    onChange={e => setConcorrente(e.target.value)}
-                    value={concorrente}
-                    placeholder="Insira o novo concorrente"
+                    <Inputs
+                        type={"text"}
+                        length={3}
+                        change={(e) => setConcorrente(e.target.value)}
+                        value={concorrente}
+                        placeholder={"Nome"}
+                     />
+                    <Inputs 
+                        type={"text"}
+                        length={3}
+                        change={(e) => setPremio(e.target.value)}
+                        value={premio}
+                        placeholder={"Prêmio"}
                     />
                     <button onClick={() => addLista(concorrente)}>Adicionar</button>
                     <button onClick={sortear}>Sortear</button>
                 </div>
-                    <div className="listagem">
+                <div className="listagem">
+                    <div className="listagem-concorrentes">
                         {
                             lista.map((a) => {
                                 return(
@@ -67,9 +104,22 @@ export default function Sorteador(){
                             })
                         }
                     </div>
+                    <div className="listagem-ganhador-premio">
+                        {
+                            ganhadores.map((a) => {
+                                return(
+                                    <Premios 
+                                        premio={a.item}
+                                        ganhador={a.ganhador}
+                                    />
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+                    
                     <footer>Desenvolvido pelo <span>CODEV</span></footer>
             </section>
-            
         </>
     );
 

@@ -11,7 +11,7 @@ export default function ModalSorteado(props){
                     </div>
                     <div className="botoes">
                         <button onClick={props.setModal}>Novo sorteio</button>
-                        <button>Excluir sorteado da lista</button>
+                        <button onClick={props.excluir}>Excluir sorteado da lista</button>
                     </div>
                 </div>
             </div>
