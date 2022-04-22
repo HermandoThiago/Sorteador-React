@@ -15,16 +15,7 @@ export default function Sorteador(){
     const [sorteado, setSorteado] = useState("");
     const [modal, setModal] = useState(false);
     const [premio, setPremio] = useState("");
-    const [ganhadores, setGanhadores] = useState([
-        {
-            item: "Caneca",
-            ganhador: "Hermando Thiago"
-        },
-        {
-            item: "Voucher",
-            ganhador: "Rafaela"
-        }
-    ]);
+    const [ganhadores, setGanhadores] = useState([]);
 
 
     function addLista(concorrente){
@@ -49,11 +40,24 @@ export default function Sorteador(){
        let ganhador = [...lista][Math.floor(Math.random() * lista.length)]
 
         if(!ganhador){
-            ganhador = "Não existe ganhador"
-        }
 
-       setSorteado(ganhador);
-       setModal(true);
+            alert("Adicione pelo menos um nome na lista")
+        
+        }else if(!premio){
+
+            alert("Adicione um prêmio")
+
+        }else{
+
+            let data = {
+                item: premio,
+                ganhador: ganhador
+            }
+
+            setSorteado(ganhador);
+            setGanhadores([...ganhadores, data]);
+            setModal(true);
+        }
     }
 
     function excluirSorteado(sorteado){
@@ -63,13 +67,20 @@ export default function Sorteador(){
         setModal(false);
     }
 
+    function fecharModal(){
+        setSorteado("");
+        setPremio("");
+        setModal(false);
+    }
+
     return(
         <>
             <ModalSorteado 
-            sorteado={sorteado}
-            modal={modal}
-            setModal={() => setModal(!modal)}
-            excluir={() => excluirSorteado(sorteado)}
+                premio={premio}
+                sorteado={sorteado}
+                modal={modal}
+                setModal={fecharModal}
+                excluir={() => excluirSorteado(sorteado)}
             />
             <section className="container">
                 <div className="title">
@@ -84,6 +95,7 @@ export default function Sorteador(){
                         value={concorrente}
                         placeholder={"Nome"}
                      />
+                     <button onClick={() => addLista(concorrente)}>Adicionar</button>
                     <Inputs 
                         type={"text"}
                         length={3}
@@ -91,7 +103,6 @@ export default function Sorteador(){
                         value={premio}
                         placeholder={"Prêmio"}
                     />
-                    <button onClick={() => addLista(concorrente)}>Adicionar</button>
                     <button onClick={sortear}>Sortear</button>
                 </div>
                 <div className="listagem">
@@ -101,7 +112,7 @@ export default function Sorteador(){
                                 return(
                                     <Lista nome={a} delete={() => deleteLista(a)}/>
                                 )
-                            })
+                            }) 
                         }
                     </div>
                     <div className="listagem-ganhador-premio">
