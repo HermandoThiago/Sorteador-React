@@ -7,7 +7,7 @@ export default function ModalSorteado(props){
             <div className={props.modal ? "modal-sorteado mostrar" : "modal-sorteado"}>
                 <div className="box-modal">
                     <div className="sorteado">
-                        <h2>O ganhador do {props.premio}</h2>
+                        <h2>O ganhador do prêmio <span className="premio">{props.premio}</span></h2>
                         <p>{props.sorteado}</p>
                     </div>
                     <div className="botoes">

@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
 .modal-sorteado{
 
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: none;
     justify-content: center;
     align-items: center;
-    background-color: rgba(128, 128, 128, 0.4);
+    background-color: rgba(128, 128, 128, 0.2);
     position: absolute;
 
     .box-modal{
@@ -16,16 +18,20 @@
         padding: 30px;
         background-color: white;
         box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.208);
-        border-radius: 10px;
+        border-radius: 5px;
         animation: modalAnimation;
         animation-duration: 1s;
 
         .sorteado{
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 80%;
+            .premio{
+                color: #672c70;
+            }
             p{
+                margin-top: 10px;
                 font-weight: bold;
                 font-size: 1.5rem;
             }
@@ -34,12 +40,16 @@
         button{
             padding: 10px 20px;
             margin-right: 10px;
-            border-radius: 10px;
+            border-radius: 5px;
             border: 0;
             color: white;
             background-color: #672c70;
             font-weight: bold;
             cursor: pointer;
+        }
+
+        button:nth-child(2){
+            background-color: red;
         }
 
     }
