@@ -65,6 +65,7 @@ export default function Sorteador(){
         setLista(newList);
         setSorteado("");
         setModal(false);
+        setPremio("");
     }
 
     function fecharModal(){
@@ -128,8 +129,7 @@ export default function Sorteador(){
                         }
                     </div>
                 </div>
-                    
-                    <footer>Desenvolvido pelo <span>CODEV</span></footer>
+                <footer>Desenvolvido pelo <span>CODEV</span></footer>
             </section>
         </>
     );

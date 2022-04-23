@@ -5,8 +5,12 @@ export default function Lista(props){
 
     return(
         <div className="concorrente">
-            <span>{props.nome} </span>
-            <button onClick={props.delete}>{<FaTrash />}</button>
+            <div className="nome">
+                <span>{props.nome} </span>
+            </div>
+            <div className="deletar-button">
+                <button onClick={props.delete}>{<FaTrash />}</button>
+            </div>
         </div>
     );
 }
