@@ -2,11 +2,13 @@ import React, { useState } from "react";
 // import styles
 import '../styles/sorteador.scss';
 import '../styles/modalSorteado.scss';
+import '../styles/modalErro.scss';
 // import components
 import Lista from "./Lista";
 import ModalSorteado from "./ModalSorteado";
 import Inputs from "./Inputs";
 import Premios from "./Premios";
+import ModalErro from "./ModalErro";
 
 export default function Sorteador(){
 
@@ -16,12 +18,20 @@ export default function Sorteador(){
     const [modal, setModal] = useState(false);
     const [premio, setPremio] = useState("");
     const [ganhadores, setGanhadores] = useState([]);
-
+    const [modalErrors, setModalErrors] = useState(
+        {
+            user: "Preencha o nome do concorrente",
+            modalUser: false,
+            premio: "Digite o nome do prêmio",
+            modalPremio: false,
+            lista: "Adicione pelo menos um concorrente na lista",
+            modalLista: false
+        })
 
     function addLista(concorrente){
 
         if(!concorrente){
-            alert("Insira um nome válido")
+            setModalErrors({...modalErrors, modalUser: true})
             return false
         }else{
             setLista([...lista, concorrente]);
@@ -41,11 +51,11 @@ export default function Sorteador(){
 
         if(!ganhador){
 
-            alert("Adicione pelo menos um nome na lista")
+            setModalErrors({...modalErrors, modalLista: true})
         
         }else if(!premio){
 
-            alert("Adicione um prêmio")
+            setModalErrors({...modalErrors, modalPremio: true})
 
         }else{
 
@@ -82,6 +92,21 @@ export default function Sorteador(){
                 modal={modal}
                 setModal={fecharModal}
                 excluir={() => excluirSorteado(sorteado)}
+            />
+            <ModalErro 
+                erro={modalErrors.user}
+                modal={modalErrors.modalUser}
+                fechar={() => setModalErrors({...modalErrors, modalUser: false})}
+            />
+            <ModalErro 
+                erro={modalErrors.premio}
+                modal={modalErrors.modalPremio}
+                fechar={() =>  setModalErrors({...modalErrors, modalPremio: false})}
+            />
+            <ModalErro 
+                erro={modalErrors.lista}
+                modal={modalErrors.modalLista}
+                fechar={() => setModalErrors({...modalErrors, modalLista: false})}
             />
             <section className="container">
                 <div className="title">
