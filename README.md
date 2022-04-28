@@ -8,4 +8,9 @@ Na empresa em que eu trabalho é realizado mensalmente um bate papo entre os mem
 <img width="60px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" />
 </div>
 
-### Status - Incompleto
+## Dependências
+
+- Sass
+- React-icons
+
+### Status - Completo (aberto para melhorias de usabilidade e novas funções)
