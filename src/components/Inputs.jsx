@@ -6,8 +6,6 @@ export default function Inputs(props){
         <>
         <input 
             type={props.type}
-            required 
-            minLength={props.length}
             onChange={props.change}
             value={props.value}
             placeholder={props.placeholder}

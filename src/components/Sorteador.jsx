@@ -20,7 +20,7 @@ export default function Sorteador(){
     const [ganhadores, setGanhadores] = useState([]);
     const [modalErrors, setModalErrors] = useState(
         {
-            user: "Preencha o nome do concorrente",
+            user: "Preencha o nome do concorrente com pelo menos 3 caracteres",
             modalUser: false,
             premio: "Digite o nome do prêmio",
             modalPremio: false,
@@ -30,7 +30,7 @@ export default function Sorteador(){
 
     function addLista(concorrente){
 
-        if(!concorrente){
+        if(!concorrente || concorrente.length < 3){
             setModalErrors({...modalErrors, modalUser: true})
             return false
         }else{
@@ -116,7 +116,6 @@ export default function Sorteador(){
                 <div className="add">
                     <Inputs
                         type={"text"}
-                        length={3}
                         change={(e) => setConcorrente(e.target.value)}
                         value={concorrente}
                         placeholder={"Nome"}
@@ -124,7 +123,6 @@ export default function Sorteador(){
                      <button onClick={() => addLista(concorrente)}>Adicionar</button>
                     <Inputs 
                         type={"text"}
-                        length={3}
                         change={(e) => setPremio(e.target.value)}
                         value={premio}
                         placeholder={"Prêmio"}
