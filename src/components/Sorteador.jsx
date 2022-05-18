@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Howl, Howler } from "howler";
 // import styles
 import '../styles/sorteador.scss';
@@ -17,7 +17,6 @@ export default function Sorteador(){
     const [concorrente, setConcorrente] = useState("");
     const [sorteado, setSorteado] = useState("");
     const [modal, setModal] = useState(false);
-    const [ccc, setCcc] = useState(0)
     const [premio, setPremio] = useState("");
     const [ganhadores, setGanhadores] = useState([]);
     const [modalErrors, setModalErrors] = useState(
