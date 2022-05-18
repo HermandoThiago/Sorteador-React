@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Howl, Howler } from "howler";
 // import styles
 import '../styles/sorteador.scss';
 import '../styles/modalSorteado.scss';
@@ -16,6 +17,7 @@ export default function Sorteador(){
     const [concorrente, setConcorrente] = useState("");
     const [sorteado, setSorteado] = useState("");
     const [modal, setModal] = useState(false);
+    const [ccc, setCcc] = useState(0)
     const [premio, setPremio] = useState("");
     const [ganhadores, setGanhadores] = useState([]);
     const [modalErrors, setModalErrors] = useState(
@@ -27,6 +29,16 @@ export default function Sorteador(){
             lista: "Adicione pelo menos um concorrente na lista",
             modalLista: false
         })
+
+    const soundMp3 = require("../assets/audios/piao_casa_propria.mp3")
+
+    const callMySound = (src) => {
+        const sound = new Howl({
+            src,
+            html5: true
+        })
+        sound.play()
+    }
 
     function addLista(concorrente){
 
@@ -64,9 +76,12 @@ export default function Sorteador(){
                 ganhador: ganhador
             }
 
+            callMySound(soundMp3)            
+
             setSorteado(ganhador);
             setGanhadores([...ganhadores, data]);
             setModal(true);
+
         }
     }
 

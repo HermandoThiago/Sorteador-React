@@ -7,11 +7,17 @@
     display: none;
     justify-content: center;
     align-items: center;
-    background-color: rgba(128, 128, 128, 0.2);
+    background-color: #fff;
+    // background-color: rgba(128, 128, 128, 0.2);
     position: fixed;
     top: 0;
     left: 0;
     z-index: 2000;
+
+    .gif{
+        position: absolute;
+        z-index: 2001;
+    }
 
     .box-modal{
 
@@ -22,8 +28,10 @@
         background-color: white;
         box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.208);
         border-radius: 5px;
-        animation: modalAnimation;
-        animation-duration: 1s;
+        border: 1px solid #672c70;
+        z-index: 2002;
+        animation: modalAnimation123;
+        animation-duration: 10s;
 
         .sorteado{
             display: flex;
@@ -63,13 +71,52 @@
      display: flex;
 }
 
+
+
 @keyframes modalAnimation {
     from{
-        margin-top: 300px;
+        //margin-top: 300px;
         opacity: 0;
     }
     to{
-        margin-top: 0;
+        //margin-top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes modalAnimation123 {
+    0%{
+        //margin-top: 300px;
+        opacity: 0;
+    }
+    10%{
+        opacity: 0;
+    }
+    20%{
+        opacity: 0;
+    }
+    30%{
+        opacity: 0;
+    }
+    40%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    60%{
+        opacity: 0;
+    }
+    70%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 0;
+    }
+    90%{
+        opacity: 0;
+    }
+    100%{
         opacity: 1;
     }
 }
