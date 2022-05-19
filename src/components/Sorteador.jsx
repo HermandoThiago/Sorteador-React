@@ -124,6 +124,7 @@ export default function Sorteador(){
             />
             <section className="container">
                 <div className="title">
+                    <img src={require('../assets/images/logo.png')} alt="" />
                     <h1>Sorteador <span>CloudOpss</span></h1>
                 </div>
                 

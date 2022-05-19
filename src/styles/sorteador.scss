@@ -18,8 +18,18 @@
 
     .title{
 
+        img{
+            max-width: 10%;
+            margin-right: 10px;
+        }
+
+        width: 100%;
         padding: 10px 40px;
         font-size: 2.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
 
         h1{
 
@@ -207,6 +217,14 @@
 @media screen and (max-width: 768px) {
     
     .container{
+        .title{
+            img{
+                max-width: 70%;
+                margin-right: 0px;
+            }
+            flex-direction: column;
+            text-align: center;
+        }
             height: 100%;
         .add{
             width: 100%;
